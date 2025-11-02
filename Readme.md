@@ -78,7 +78,7 @@ The project follows the **Page Object Model (POM)** with a clean separation betw
 | **Selenium WebDriver** | Browser automation |
 | **WebDriverManager** | Automatic driver management |
 | **TestNG** | Test runner and assertions |
-| **Allure Reports** | Rich reporting with screenshots |
+| **Allure Reports** | Rich reporting |
 | **IntelliJ IDEA** | IDE for development and execution |
 
 ---
