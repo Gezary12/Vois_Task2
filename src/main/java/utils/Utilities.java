@@ -48,8 +48,7 @@ public class Utilities {
     public String readTestData(int vRow, int vColumn) {
         String value = "";
 
-        try (FileInputStream fis = new FileInputStream("src/test/TestData/TestData.xlsx");
-             Workbook wb = new XSSFWorkbook(fis)) {
+        try (FileInputStream fis = new FileInputStream("src/test/TestData/TestData.xlsx"); Workbook wb = new XSSFWorkbook(fis)) {
 
             Sheet sheet = wb.getSheetAt(0);
             Row row = sheet.getRow(vRow);
@@ -60,12 +59,8 @@ public class Utilities {
                     case STRING:
                         value = cell.getStringCellValue().trim();
                         break;
-
                     case NUMERIC:
-                        // Convert any number to string for sendKeys()
                         double numericValue = cell.getNumericCellValue();
-
-                        // If it's a whole number, remove the decimal part
                         if (numericValue == Math.floor(numericValue)) {
                             value = String.valueOf((long) numericValue);
                         } else {

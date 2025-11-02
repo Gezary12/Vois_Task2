@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class HomePage {
 
@@ -14,8 +15,8 @@ public class HomePage {
     private By departureSearch = By.xpath("//div[@id='fromCity_chosen']//input[@placeholder='Search Your City Name']");
     private By destinationCity = By.cssSelector("div[id='toCity_chosen'] span");
     private By destinationSearch = By.cssSelector("div[id='toCity_chosen'] input[placeholder='Search Your City Name']");
-    private By departureDate = By.xpath("//input[@id='departDate']");
-    private By departureDateNumber = By.cssSelector(".ui-state-default.ui-state-highlight");
+    private By departureDate = By.xpath("//input[@name=\"departDate\"]");
+    private By selectDayFromCalendar = By.xpath("//a[text()=\"29\"]");
     private By searchButton = By.xpath("//div[@id='submitSearch']");
 
 
@@ -45,10 +46,11 @@ public class HomePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(departureDate));
         driver.findElement(departureDate).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(departureDateNumber));
-        WebElement selectDate = driver.findElement(departureDateNumber);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", selectDate);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(selectDayFromCalendar));
+        WebElement selectDate = driver.findElement(selectDayFromCalendar);
+       JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("arguments[0].click();", selectDate);
+
     }
 
     public BookingPage clickOnSearchButton() {
